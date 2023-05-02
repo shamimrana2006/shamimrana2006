@@ -70,6 +70,33 @@ navLink.forEach((e)=>{
             skillsHeader.forEach(e=>{
                 e.addEventListener("click",toggleskills)
             })
+
+// changePercentage------------------------
+
+            var skillNumber = document.querySelectorAll('.skills-number'),
+                skillPercentege =  document.querySelectorAll('.skills-percentage')
+
+            var StorePercenteg = []
+
+            skillNumber.forEach(j=>{
+                StorePercenteg.push(j.innerHTML)
+                console.log(StorePercenteg)
+
+            })
+
+
+            var changePercenteg = []
+            
+            skillPercentege.forEach(l=>{
+                changePercenteg.push(l)
+                console.log(changePercenteg)
+            })
+
+            for(i = 0 ; i<StorePercenteg.length ; i++){
+                changePercenteg[i].style.width = StorePercenteg[i]
+               
+            }
+            
             
             
             
@@ -307,6 +334,7 @@ window.addEventListener("mousemove", function (e) {
   coords.x = e.clientX;
   coords.y = e.clientY;
 });
+
 
 function animateCircles() {
   let x = coords.x;
