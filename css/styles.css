@@ -384,6 +384,7 @@ body.dark-theme{
     background-color: var(--first-color);
     color: #fff;
     padding: 1rem;
+    margin: 2px 0px;
     border-radius: .5rem;
     font-weight: var(--font-medium);
     outline: none;
