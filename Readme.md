@@ -1,5 +1,5 @@
 <div align="center">
-  <img style='border-radius:"10px";' width='100%' src="./img/shamimbanner.png"  />
+  <img style='border-radius:"10px";' width='100%' src="./img/shamimbanner1.png"  />
 </div>
 
 ###
