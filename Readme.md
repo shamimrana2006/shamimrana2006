@@ -35,8 +35,7 @@
 Hi there! 👋 I'm a passionate Full Stack Developer specializing in building scalable web applications. I love solving complex problems and delivering impactful user experiences. Currently, I am exploring advanced features in **Next.js** and working on exciting projects like a **tourism website**.
 
 # Skills :
-
-<div align="center">
+<div align="left">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="30" alt="react logo"  />
   <img width="12" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" height="30" alt="redux logo"  />
