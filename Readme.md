@@ -32,7 +32,7 @@
 </div>
 
 # About Me
-
+Check out my [Portfolio](https://shamimrana2006.github.io/shamimrana2006/).
 Hi there! 👋 I'm a passionate Full Stack Developer specializing in building scalable web applications. I love solving complex problems and delivering impactful user experiences. Currently, I am exploring advanced features in **Next.js** and working on exciting projects like a **tourism website**.
 
 # Skills :
