@@ -51,3 +51,18 @@ Hi there! 👋 I'm a passionate Full Stack Developer specializing in building sc
 </div>
 
 ###
+
+## 📞 Contact Information
+
+- **📧 Email:** shamimranaprofessional@gmail.com  
+- **📱 WhatsApp:** +8801909616418  
+- **🌐 Username (All Social Media):** `shamimrana2006`
+
+### 🔗 Social Links
+- **Facebook:** [facebook.com/shamimrana2006](https://facebook.com/shamimrana2006)
+- **LinkedIn:** [linkedin.com/in/shamimrana2006](https://linkedin.com/in/shamimrana2006)
+- **Twitter (X):** [twitter.com/shamimranapro85](https://twitter.com/shamimranapro85)
+- **Instagram:** [instagram.com/shamimrana2006](https://instagram.com/shamimrana2006)
+- **GitHub:** [github.com/shamimrana2006](https://github.com/shamimrana2006)
+- **Portfolio Website:** [shamimrana2006.github.io/shamimrana2006](https://shamimrana2006.github.io/shamimrana2006)
+
