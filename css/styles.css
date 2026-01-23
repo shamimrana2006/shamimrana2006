@@ -92,6 +92,95 @@ body {
   color: var(--text-color);
   position: relative;
   cursor: none !important;
+  overflow-x: hidden;
+}
+
+/* Scroll Animation Classes */
+.section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.section.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-title {
+  opacity: 0;
+  transform: translateY(-30px);
+  transition: opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s;
+}
+
+.section.active .section-title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-subtitle {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.6s ease-out 0.3s, transform 0.6s ease-out 0.3s;
+}
+
+.section.active .section-subtitle {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade in from left */
+.fade-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-left.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Fade in from right */
+.fade-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-right.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Fade in with scale */
+.fade-scale {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-scale.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Stagger animation for children */
+.stagger-item {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.stagger-item.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Home section - Always visible */
+.home.section {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* cursor ========================== */
@@ -338,17 +427,15 @@ body.dark-theme {
   transform: translate(-50%, -50%);
   z-index: -1;
   border-radius: 48% 52% 50% 50% / 60% 60% 40% 40%;
-  background: radial-gradient(
-    circle at 35% 30%,
-    hsla(var(--hue-color), 75%, 70%, 0.15),
-    hsla(var(--hue-color), 70%, 60%, 0.12) 40%,
-    hsla(var(--hue-color), 65%, 50%, 0.08) 70%,
-    transparent
-  );
+  background: radial-gradient(circle at 35% 30%,
+      hsla(var(--hue-color), 75%, 70%, 0.15),
+      hsla(var(--hue-color), 70%, 60%, 0.12) 40%,
+      hsla(var(--hue-color), 65%, 50%, 0.08) 70%,
+      transparent);
   border: none;
   outline: 2px solid hsla(var(--hue-color), 70%, 65%, 0.25);
   outline-offset: -2px;
-  box-shadow: 
+  box-shadow:
     inset -8px -8px 25px hsla(var(--hue-color), 69%, 61%, 0.2),
     inset 8px 8px 25px hsla(var(--hue-color), 92%, 85%, 0.15),
     0 15px 45px hsla(var(--hue-color), 69%, 61%, 0.2),
@@ -363,24 +450,31 @@ body.dark-theme {
   0% {
     transform: translate(-50%, -50%) rotate(0deg);
   }
+
   15% {
     transform: translate(-48%, -54%) rotate(3deg);
   }
+
   30% {
     transform: translate(-52%, -46%) rotate(-4deg);
   }
+
   45% {
     transform: translate(-47%, -53%) rotate(5deg);
   }
+
   60% {
     transform: translate(-53%, -47%) rotate(-3deg);
   }
+
   75% {
     transform: translate(-49%, -52%) rotate(2deg);
   }
+
   90% {
     transform: translate(-51%, -48%) rotate(-2deg);
   }
+
   100% {
     transform: translate(-50%, -50%) rotate(0deg);
   }
@@ -391,33 +485,43 @@ body.dark-theme {
   0% {
     border-radius: 48% 52% 50% 50% / 60% 60% 40% 40%;
   }
+
   10% {
     border-radius: 50% 50% 48% 52% / 58% 62% 42% 38%;
   }
+
   20% {
     border-radius: 52% 48% 47% 53% / 62% 58% 38% 42%;
   }
+
   30% {
     border-radius: 48% 52% 52% 48% / 58% 62% 42% 38%;
   }
+
   40% {
     border-radius: 47% 53% 50% 50% / 62% 58% 40% 40%;
   }
+
   50% {
     border-radius: 50% 50% 48% 52% / 60% 60% 38% 42%;
   }
+
   60% {
     border-radius: 52% 48% 51% 49% / 58% 62% 42% 38%;
   }
+
   70% {
     border-radius: 49% 51% 50% 50% / 62% 58% 40% 42%;
   }
+
   80% {
     border-radius: 50% 50% 52% 48% / 60% 60% 42% 38%;
   }
+
   90% {
     border-radius: 51% 49% 49% 51% / 58% 62% 38% 42%;
   }
+
   100% {
     border-radius: 48% 52% 50% 50% / 60% 60% 40% 40%;
   }

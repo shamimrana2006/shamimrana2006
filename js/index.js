@@ -26,9 +26,9 @@ document
         // document.getElementById("status").innerHTML =
         //   "Failed to send message. Please try again.";
         // console.error("EmailJS Error: ", error);
-        alert('error send email '+ error)
+        alert('error send email ' + error)
         console.log(error);
-        
+
       });
   });
 
@@ -370,3 +370,61 @@ function animateCircles() {
 }
 
 animateCircles();
+
+// Scroll Animation
+const scrollElements = document.querySelectorAll('.section, .fade-left, .fade-right, .fade-scale');
+
+const elementInView = (el, dividend = 1) => {
+  const elementTop = el.getBoundingClientRect().top;
+  return (
+    elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+  );
+};
+
+const elementOutofView = (el) => {
+  const elementTop = el.getBoundingClientRect().top;
+  return (
+    elementTop > (window.innerHeight || document.documentElement.clientHeight)
+  );
+};
+
+const displayScrollElement = (element) => {
+  element.classList.add('active');
+};
+
+const hideScrollElement = (element) => {
+  element.classList.remove('active');
+};
+
+const handleScrollAnimation = () => {
+  scrollElements.forEach((el) => {
+    if (elementInView(el, 1.25)) {
+      displayScrollElement(el);
+    } else if (elementOutofView(el)) {
+      hideScrollElement(el);
+    }
+  });
+};
+
+// Stagger animation for items
+const staggerItems = document.querySelectorAll('.stagger-item');
+const handleStaggerAnimation = () => {
+  staggerItems.forEach((item, index) => {
+    if (elementInView(item, 1.25)) {
+      setTimeout(() => {
+        item.classList.add('active');
+      }, index * 100); // 100ms delay between each item
+    }
+  });
+};
+
+window.addEventListener('scroll', () => {
+  handleScrollAnimation();
+  handleStaggerAnimation();
+});
+
+// Initial check on page load
+window.addEventListener('load', () => {
+  handleScrollAnimation();
+  handleStaggerAnimation();
+});
