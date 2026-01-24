@@ -1284,6 +1284,214 @@ body.dark-theme {
   transform: rotate(-180deg);
 }
 
+/* Certification Section ------------------------- */
+.certification-container {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.certification-category {
+  margin-bottom: var(--mb-2);
+}
+
+.certification-category-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background-color: var(--container-color);
+  border: 1px solid var(--first-color-lighter);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: var(--mb-1);
+}
+
+.certification-category-header:hover {
+  background-color: var(--first-color-lighter);
+}
+
+.certification-category-icon {
+  font-size: 1.25rem;
+  color: var(--first-color);
+}
+
+.certification-category-title {
+  font-size: var(--h3-font-size);
+  color: var(--title-color);
+  font-weight: var(--font-semibold);
+  margin: 0;
+  flex: 1;
+}
+
+.certification-category-arrow {
+  font-size: 1.25rem;
+  color: var(--first-color);
+  transition: transform 0.3s ease;
+}
+
+.certification-grid {
+  display: grid;
+  gap: var(--mb-1-5);
+  grid-template-columns: 1fr;
+  max-height: 1000px;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  opacity: 1;
+  align-items: start;
+}
+
+.certification-close {
+  max-height: 0;
+  opacity: 0;
+  margin-bottom: 0;
+}
+
+.certification-category:has(.certification-close) .certification-category-arrow {
+  transform: rotate(-180deg);
+}
+
+.certification-card {
+  background-color: var(--container-color);
+  border: 1px solid var(--first-color-lighter);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.certification-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: var(--first-color);
+}
+
+.certification-card-highlight {
+  border: 2px solid var(--first-color);
+  background: linear-gradient(135deg, var(--container-color) 0%, var(--first-color-lighter) 100%);
+}
+
+.certification-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: var(--mb-0-75);
+}
+
+.certification-icon {
+  font-size: 1.5rem;
+  color: var(--first-color);
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.certification-card-header>div {
+  flex: 1;
+}
+
+.certification-title {
+  font-size: var(--normal-font-size);
+  color: var(--title-color);
+  font-weight: var(--font-semibold);
+  margin: 0 0 0.25rem 0;
+  line-height: 1.4;
+}
+
+.certification-subtitle {
+  font-size: var(--small-font-size);
+  color: var(--text-color);
+  display: block;
+}
+
+.certification-details {
+  max-height: 500px;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
+  opacity: 1;
+  margin-bottom: var(--mb-0-75);
+}
+
+.certification-hidden {
+  max-height: 0;
+  opacity: 0;
+  margin-bottom: 0;
+}
+
+.certification-details p {
+  margin: 0 0 0.5rem 0;
+  color: var(--text-color);
+  font-size: var(--small-font-size);
+  line-height: 1.6;
+}
+
+.certification-details strong {
+  color: var(--title-color);
+  font-weight: var(--font-medium);
+}
+
+.certification-performance ul {
+  margin: 0.25rem 0 0 1.25rem;
+  padding: 0;
+}
+
+.certification-performance li {
+  color: var(--text-color);
+  margin-bottom: 0.25rem;
+  font-size: var(--smaller-font-size);
+}
+
+.certification-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.certification-details-btn,
+.certification-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-size: var(--small-font-size);
+  font-weight: var(--font-medium);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  font-family: var(--body-font);
+}
+
+.certification-details-btn {
+  background-color: var(--first-color-lighter);
+  color: var(--first-color);
+  flex: 1;
+  min-width: 100px;
+}
+
+.certification-details-btn:hover {
+  background-color: var(--first-color);
+  color: #fff;
+}
+
+.certification-download-btn {
+  background-color: var(--first-color);
+  color: #fff;
+  flex: 1;
+  min-width: 100px;
+  justify-content: center;
+}
+
+.certification-download-btn:hover {
+  background-color: var(--first-color-alt);
+  transform: translateX(3px);
+}
+
+.certification-details-btn i,
+.certification-download-btn i {
+  font-size: 0.875rem;
+}
+
 /* quality design ------------------------- */
 
 .qualification-tabs {
@@ -1951,6 +2159,10 @@ footer #wave4 {
   .footer-option {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  .certification-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -2074,6 +2286,10 @@ footer #wave4 {
     display: grid;
     justify-content: center;
     grid-template-columns: 0.5fr;
+  }
+
+  .certification-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .services-container {

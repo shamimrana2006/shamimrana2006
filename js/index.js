@@ -428,3 +428,40 @@ window.addEventListener('load', () => {
   handleScrollAnimation();
   handleStaggerAnimation();
 });
+
+// ==================== Certification Section ====================
+
+// Toggle certification category sections
+const certificationCategoryHeaders = document.querySelectorAll('.certification-category-header');
+
+certificationCategoryHeaders.forEach(header => {
+  header.addEventListener('click', function () {
+    const certificationGrid = this.nextElementSibling;
+
+    // Toggle the certification-close class
+    certificationGrid.classList.toggle('certification-close');
+  });
+});
+
+// Toggle certification details
+const certificationDetailsBtns = document.querySelectorAll('.certification-details-btn');
+
+certificationDetailsBtns.forEach(btn => {
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation(); // Prevent event bubbling
+
+    const card = this.closest('.certification-card');
+    const details = card.querySelector('.certification-details');
+
+    // Toggle details visibility
+    details.classList.toggle('certification-hidden');
+
+    // Update button text
+    const icon = this.querySelector('i');
+    if (details.classList.contains('certification-hidden')) {
+      this.innerHTML = '<i class="uil uil-info-circle"></i> Details';
+    } else {
+      this.innerHTML = '<i class="uil uil-eye-slash"></i> Hide';
+    }
+  });
+});
