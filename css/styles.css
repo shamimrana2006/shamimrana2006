@@ -1232,6 +1232,15 @@ body.dark-theme {
 .skills-percentage {
   display: block;
   background-color: var(--first-color);
+  transition: width 1.5s ease;
+}
+
+.skill-close .skills-percentage {
+  width: 0 !important;
+}
+
+.skill-oepn .skills-percentage {
+  /* Width will be set by JavaScript */
 }
 
 .skills-list {
@@ -1276,15 +1285,24 @@ body.dark-theme {
 .skill-close .skills-list {
   height: 0;
   overflow: hidden;
+  transition: height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
+  opacity: 0;
 }
 
 .skill-oepn .skills-list {
   height: max-content;
   margin-bottom: var(--mb-2-5);
+  transition: height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
+  opacity: 1;
 }
 
 .skill-oepn .skills-arrow {
   transform: rotate(-180deg);
+  transition: transform 0.3s ease;
+}
+
+.skills-arrow {
+  transition: transform 0.3s ease;
 }
 
 /* Certification Section ------------------------- */
@@ -1558,14 +1576,39 @@ body.dark-theme {
 
 .qualification [data-contect] {
   display: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .qualification-active[data-contect] {
   display: block;
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.qualification-button {
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.qualification-button:hover {
+  transform: translateY(-2px);
 }
 
 .qualification-button.qualification-active {
   color: var(--first-color);
+  transform: scale(1.05);
 }
 
 /* sevices --------------------------------- */

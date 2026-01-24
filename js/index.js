@@ -80,13 +80,55 @@ const skilContect = document.querySelectorAll(".skills-content"),
 
 function toggleskills() {
   let itemclass = this.parentNode.className;
+  const skillContent = this.parentNode;
 
   for (i = 0; i < skilContect.length; i++) {
     skilContect[i].className = "skills-content skill-close";
   }
   if (itemclass === "skills-content skill-close") {
     this.parentNode.className = "skills-content skill-oepn";
+
+    // Trigger animations when opening
+    setTimeout(() => {
+      animateSkillBars(skillContent);
+      animatePercentageCount(skillContent);
+    }, 100);
   }
+}
+
+// Animate skill bars
+function animateSkillBars(container) {
+  const skillBars = container.querySelectorAll('.skills-percentage');
+  const skillNumbers = container.querySelectorAll('.skills-number');
+
+  skillBars.forEach((bar, index) => {
+    const targetWidth = skillNumbers[index].textContent;
+    bar.style.width = '0';
+    setTimeout(() => {
+      bar.style.width = targetWidth;
+    }, 50);
+  });
+}
+
+// Animate percentage counting
+function animatePercentageCount(container) {
+  const skillNumbers = container.querySelectorAll('.skills-number');
+
+  skillNumbers.forEach((numberEl) => {
+    const targetPercent = parseInt(numberEl.textContent);
+    let currentPercent = 0;
+    const increment = targetPercent / 60; // 60 frames for smooth animation
+
+    const timer = setInterval(() => {
+      currentPercent += increment;
+      if (currentPercent >= targetPercent) {
+        numberEl.textContent = targetPercent + '%';
+        clearInterval(timer);
+      } else {
+        numberEl.textContent = Math.floor(currentPercent) + '%';
+      }
+    }, 25); // Update every 25ms (1500ms total / 60 frames)
+  });
 }
 
 skillsHeader.forEach((e) => {
