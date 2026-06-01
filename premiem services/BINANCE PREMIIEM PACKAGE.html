@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binance Bookmarks - Complete Tools</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f6e56 0%, #065f46 100%);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(15, 110, 86, 0.15);
+        }
+
+        /* License Modal Overlay */
+        #license-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #license-box {
+            background: #fff;
+            border-radius: 18px;
+            padding: 36px 32px 28px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        #license-box h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0F6E56;
+            margin-bottom: 6px;
+        }
+
+        #license-box p {
+            font-size: 13px;
+            color: #6b7280;
+            margin-bottom: 20px;
+        }
+
+        #license-input {
+            width: 100%;
+            border: 1.5px solid #d1d5db;
+            border-radius: 10px;
+            padding: 12px 14px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color .2s;
+            box-sizing: border-box;
+        }
+
+        #license-input:focus {
+            border-color: #0F6E56;
+        }
+
+        #license-error {
+            color: #dc2626;
+            font-size: 12px;
+            margin-top: 8px;
+            display: none;
+        }
+
+        #license-submit {
+            width: 100%;
+            margin-top: 16px;
+            background: #0F6E56;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 13px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background .2s;
+        }
+
+        #license-submit:hover {
+            background: #065f46;
+        }
+
+        /* Locked features placeholder */
+        #features-locked {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        #features-locked ul {
+            list-style: none;
+            padding: 0;
+            display: inline-block;
+            text-align: left;
+            margin: 24px auto 0;
+        }
+
+        #features-locked ul li {
+            padding: 8px 0;
+            color: #6b7280;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #features-locked ul li::before {
+            content: '🔒';
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br bg-gray-900 from-slate-50 to-slate-100">
+
+    <!-- LICENSE MODAL -->
+    <div id="license-overlay" style="display:none;">
+        <div id="license-box">
+            <h2>🔐 Enter License Key</h2>
+            <p>Enter your license number to unlock all premium trading tools.</p>
+            <input type="text" id="license-input" placeholder="e.g. SR-2024-XXXX-XXXX" autocomplete="off" />
+            <div id="license-error">❌ Invalid license key. Please try again.</div>
+            <button id="license-submit">Activate License</button>
+            <p style="text-align:center; margin-top:14px; margin-bottom:0; font-size:12px;">
+                Don't have a license? <a href="https://shamimrana.me" style="color:#0F6E56; font-weight:600;">Buy Now
+                    →</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Header (always visible) -->
+    <header class="relative overflow-hidden bg-[#0B0E11] text-white">
+        <div class="absolute inset-0">
+            <div
+                class="absolute w-[600px] h-[600px] bg-yellow-500/10 rounded-full blur-3xl animate-pulse top-[-200px] left-[-200px]">
+            </div>
+            <div
+                class="absolute w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-3xl animate-ping bottom-[-200px] right-[-200px]">
+            </div>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-6 py-24">
+            <div
+                class="inline-flex items-center gap-2 bg-[#1E2329] border border-[#2B3139] rounded-full px-4 py-2 mb-6">
+                <span class="w-2 h-2 bg-[#F0B90B] rounded-full animate-ping"></span>
+                <span class="text-[#F0B90B] text-sm font-semibold">Premium Trading Toolkit</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold leading-tight">
+                Binance
+                <span class="text-[#F0B90B] drop-shadow-lg">Premium</span>
+                Package
+            </h1>
+            <p class="text-slate-300 mt-5 max-w-2xl text-lg">
+                Advanced trading automation tools, smart price control, wallet shortcuts and professional crypto
+                utilities.
+            </p>
+            <div class="mt-10 relative inline-block buyCard">
+                <div
+                    class="absolute -top-3 left-4 bg-red-500 text-white px-4 py-1 rounded-full text-xs font-bold animate-bounce shadow-lg">
+                    -90% OFF</div>
+                <div
+                    class="relative bg-gradient-to-br from-[#1E2329] to-[#0B0E11] border border-[#2B3139] rounded-3xl px-10 py-8 shadow-2xl overflow-hidden">
+                    <div class="absolute inset-0 bg-yellow-500/10 blur-2xl animate-pulse"></div>
+                    <div class="absolute top-4 right-6 text-right">
+                        <div class="relative inline-block">
+                            <h2 class="text-7xl font-black text-slate-400/40 select-none"
+                                style="text-shadow:2px 2px 0 #000;">$90</h2>
+                            <div class="absolute top-1/2 left-0 w-full h-[3px] bg-red-500/80 rotate-[-12deg]"></div>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-1">Original Price</p>
+                    </div>
+                    <div class="relative z-10">
+                        <h2 class="text-6xl md:text-7xl font-extrabold text-[#F0B90B] animate-pulse"
+                            style="text-shadow:0 2px 0 #000,0 8px 25px rgba(0,0,0,0.8);">$29</h2>
+                        <p class="text-slate-300 mt-3 mb-8">Limited Time Offer • Full Premium Access</p>
+                        <a href="https://shamimrana.me"
+                            class="!mt-6 bg-[#F0B90B] text-black px-6 py-3 rounded-xl font-bold hover:scale-105 transition transform duration-300">Buy
+                            Now</a>
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent opacity-40">
+                    </div>
+                </div>
+            </div>
+            <div class="bg-black/60 mt-5 border border-yellow-500/30 rounded-2xl p-6 text-gray-200 hidden buyCardNotish ">
+
+                <h2 class="text-2xl font-bold text-yellow-400 mb-3">
+                    ⚠️ গুরুত্বপূর্ণ সতর্কবার্তা (Notice)
+                </h2>
+
+                <p class="mb-3">
+                    এই প্ল্যাটফর্মটি একটি প্রিমিয়াম ডিজিটাল ট্রেডিং ও অটোমেশন সার্ভিস সিস্টেম হিসেবে পরিচালিত হয়।
+                </p>
+
+                <p class="mb-3">
+                    সকল ব্যবহারকারীকে অনুরোধ করা হচ্ছে, কোনো ধরনের অননুমোদিত কপি, শেয়ার বা পুনঃবিক্রয় করা থেকে বিরত
+                    থাকুন।
+                </p>
+
+                <p class="mb-3">
+                    অনুমতি ছাড়া কনটেন্ট বা সিস্টেম ব্যবহার করলে সেটি নিয়ম লঙ্ঘন হিসেবে গণ্য হতে পারে এবং সংশ্লিষ্ট
+                    অ্যাক্সেস সীমিত বা বন্ধ করা হতে পারে।
+                </p>
+
+                <p class="text-sm text-gray-400 mt-4">
+                    এই নোটিশ সকল ব্যবহারকারীর নিরাপত্তা ও সিস্টেমের স্থিতিশীলতা বজায় রাখার জন্য প্রদান করা হয়েছে।
+                </p>
+
+            </div>
+            <div class="flex flex-wrap gap-4 mt-10">
+                <div class="bg-[#1E2329] border border-[#2B3139] px-5 py-2 rounded-xl">⚡ Fast Tools</div>
+                <div class="bg-[#1E2329] border border-[#2B3139] px-5 py-2 rounded-xl">🤖 Automation</div>
+                <div class="bg-[#1E2329] border border-[#2B3139] px-5 py-2 rounded-xl">📊 Analytics</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="px-7xl bg-gray-900 text-white mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <!-- LOCKED STATE (shown when no valid license) -->
+        <div id="features-locked">
+            <div style="font-size:64px; margin-bottom:12px;">🔒</div>
+            <h2 style="font-size:24px; font-weight:700; color:#ffffff; margin-bottom:8px;">Premium Features Locked</h2>
+            <p style="color:#6b7280; font-size:15px; max-width:400px; margin:0 auto;">Enter your license key to unlock
+                all tools below.</p>
+            <button onclick="showLicenseModal()"
+                style=" margin-top:28px; background:#0F6E56; color:#fff; border:none; border-radius:12px; padding:13px 32px; font-size:15px; font-weight:600; cursor:pointer; margin-bottom: 20px;">🔑
+                Enter License Key</button>
+
+
+            <!-- ================= PREMIUM BINANCE STYLE FEATURE SECTION ================= -->
+            <section class="relative w-full py-20 overflow-hidden bg-[#0B0E11] text-white">
+
+                <!-- BACKGROUND GLOW -->
+                <div class="absolute inset-0 -z-10">
+                    <div
+                        class="absolute w-[600px] h-[600px] bg-[#F0B90B]/10 blur-3xl rounded-full top-[-200px] left-[-200px] animate-pulse">
+                    </div>
+                    <div
+                        class="absolute w-[500px] h-[500px] bg-emerald-500/10 blur-3xl rounded-full bottom-[-200px] right-[-200px] animate-ping">
+                    </div>
+                </div>
+
+                <!-- TITLE -->
+                <div class="text-center mb-14 px-4">
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-[#F0B90B]">
+                        🚀 Binance Premium Automation Suite
+                    </h2>
+                    <p class="text-slate-400 mt-3 max-w-2xl mx-auto">
+                        Advanced trading automation, reward optimization & fast execution toolkit designed for power
+                        users.
+                    </p>
+                </div>
+
+                <!-- FEATURE LIST -->
+                <div class="max-w-5xl mx-auto space-y-5 px-4">
+
+                    <!-- ITEM -->
+                    <div class="group relative p-6 rounded-2xl border border-[#2B3139] bg-[#111418]
+            shadow-xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1">
+
+                        <div class="flex gap-4 items-start">
+                            <div class="text-2xl animate-bounce">🤖</div>
+                            <div>
+                                <h3 class="text-[#F0B90B] font-bold text-lg">Auto Trade Engine</h3>
+                                <p class="text-slate-300 text-sm mt-1">
+                                    Fully automated buy/sell execution system with smart price adjustment and fast order
+                                    triggering.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div
+                            class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition bg-gradient-to-r from-[#F0B90B]/10 to-transparent">
+                        </div>
+                    </div>
+
+                    <!-- ITEM -->
+                    <div class="group relative p-6 rounded-2xl border border-[#2B3139] bg-[#111418]
+            shadow-xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1">
+
+                        <div class="flex gap-4 items-start">
+                            <div class="text-2xl animate-pulse">📊</div>
+                            <div>
+                                <h3 class="text-[#F0B90B] font-bold text-lg">Instant Trade History (Advanced Filter)
+                                </h3>
+                                <p class="text-slate-300 text-sm mt-1">
+                                    Full detailed trade history with token filter, date filter, profit tracking &
+                                    analytics view.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div
+                            class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition bg-gradient-to-r from-[#F0B90B]/10 to-transparent">
+                        </div>
+                    </div>
+
+                    <!-- ITEM -->
+                    <div class="group relative p-6 rounded-2xl border border-[#2B3139] bg-[#111418]
+            shadow-xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1">
+
+                        <div class="flex gap-4 items-start">
+                            <div class="text-2xl animate-bounce">⚡</div>
+                            <div>
+                                <h3 class="text-[#F0B90B] font-bold text-lg">One Click Limit Trade</h3>
+                                <p class="text-slate-300 text-sm mt-1">
+                                    Instant limit order system with auto price adjustment for faster execution.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div
+                            class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition bg-gradient-to-r from-[#F0B90B]/10 to-transparent">
+                        </div>
+                    </div>
+
+                    <!-- ITEM -->
+                    <div class="group relative p-6 rounded-2xl border border-[#2B3139] bg-[#111418]
+            shadow-xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1">
+
+                        <div class="flex gap-4 items-start">
+                            <div class="text-2xl animate-pulse">🎁</div>
+                            <div>
+                                <h3 class="text-[#F0B90B] font-bold text-lg">Campaign & Reward Tracker</h3>
+                                <p class="text-slate-300 text-sm mt-1">
+                                    Track all Binance campaigns, rewards, bonus history & claim status in real time.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div
+                            class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition bg-gradient-to-r from-[#F0B90B]/10 to-transparent">
+                        </div>
+                    </div>
+
+                    <!-- ITEM -->
+                    <div class="group relative p-6 rounded-2xl border border-[#2B3139] bg-[#111418]
+            shadow-xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1">
+
+                        <div class="flex gap-4 items-start">
+                            <div class="text-2xl animate-bounce">👥</div>
+                            <div>
+                                <h3 class="text-[#F0B90B] font-bold text-lg">Multi Account Strategy Helper</h3>
+                                <p class="text-slate-300 text-sm mt-1">
+                                    Advanced workflow strategy ideas for managing multiple Binance accounts efficiently.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div
+                            class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition bg-gradient-to-r from-[#F0B90B]/10 to-transparent">
+                        </div>
+                    </div>
+
+                    <!-- ITEM -->
+                    <div class="group relative p-6 rounded-2xl border border-[#2B3139] bg-[#111418]
+            shadow-xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1">
+
+                        <div class="flex gap-4 items-start">
+                            <div class="text-2xl animate-pulse">🧩</div>
+                            <div>
+                                <h3 class="text-[#F0B90B] font-bold text-lg">One Click Extension Setup</h3>
+                                <p class="text-slate-300 text-sm mt-1">
+                                    Easy browser extension integration for instant automation activation.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div
+                            class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition bg-gradient-to-r from-[#F0B90B]/10 to-transparent">
+                        </div>
+                    </div>
+
+                    <!-- ITEM -->
+                    <div class="group relative p-6 rounded-2xl border border-[#2B3139] bg-[#111418]
+            shadow-xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1">
+
+                        <div class="flex gap-4 items-start">
+                            <div class="text-2xl animate-bounce">💰</div>
+                            <div>
+                                <h3 class="text-[#F0B90B] font-bold text-lg">All Reward Claim by one click</h3>
+                                <p class="text-slate-300 text-sm mt-1">
+                                    Faster reward claim workflow for maximizing Binance earning opportunities.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div
+                            class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition bg-gradient-to-r from-[#F0B90B]/10 to-transparent">
+                        </div>
+                    </div>
+
+                    <!-- ITEM -->
+                    <div class="group relative p-6 rounded-2xl border border-[#2B3139] bg-[#111418]
+            shadow-xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1">
+
+                        <div class="flex gap-4 items-start">
+                            <div class="text-2xl animate-pulse">📚</div>
+                            <div>
+                                <h3 class="text-[#F0B90B] font-bold text-lg">Learn & Earn Auto Helper</h3>
+                                <p class="text-slate-300 text-sm mt-1">
+                                    Fast navigation system for completing Learn & Earn tasks efficiently.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div
+                            class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition bg-gradient-to-r from-[#F0B90B]/10 to-transparent">
+                        </div>
+                    </div>
+
+                    <!-- ITEM -->
+                    <div class="group relative p-6 rounded-2xl border border-[#2B3139] bg-[#111418]
+            shadow-xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1">
+
+                        <div class="flex gap-4 items-start">
+                            <div class="text-2xl animate-bounce">📈</div>
+                            <div>
+                                <h3 class="text-[#F0B90B] font-bold text-lg">Smart Profit Optimization Flow</h3>
+                                <p class="text-slate-300 text-sm mt-1">
+                                    Designed to improve trading efficiency and maximize reward opportunities.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div
+                            class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition bg-gradient-to-r from-[#F0B90B]/10 to-transparent">
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- FOOTER NOTE -->
+                <div class="text-center mt-14 px-4">
+                    <p class="text-slate-500 text-sm">
+                        ⚡ Built for high-speed traders • Automation • Reward optimization • Efficient Binance workflow
+                    </p>
+                </div>
+
+            </section>
+
+
+            <!-- ================= MID BANNER ================= -->
+            <section class="py-24 text-center relative bg-gray-900">
+
+                <div class="max-w-5xl mx-auto px-6 border-glow rounded-2xl p-10 bg-black/40 float">
+
+                    <h2 class="text-4xl md:text-6xl font-extrabold glow leading-tight text-white">
+                        YOU CAN USE <span class="text-yellow-400">20+</span> Accounts
+                    </h2>
+
+                    <h3 class="text-3xl md:text-5xl mt-6 font-bold text-yellow-400">
+                        EARN 200 USDT / MONTH
+                    </h3>
+
+                    <p class="text-xl mt-4 text-gray-300">
+                        Affiliate Campaign Strategy → Up to <span class="text-yellow-400 font-bold">3000 USDT</span>
+                        earning potential
+                    </p>
+
+                    <button onclick="showLicenseModal()"
+                        class="mt-8 px-8 py-3 bg-yellow-400 text-black font-bold rounded-xl hover:scale-105 transition">
+                        Start Now
+                    </button>
+
+                </div>
+
+            </section>
+
+        </div>
+
+        <!-- UNLOCKED CONTENT (hidden until valid license) -->
+        <div id="features-unlocked" class="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-10" style="display:none;">
+
+            <!-- Welcome bar -->
+            <div
+                style="background:#ECFDF5; border:1px solid #A7F3D0; border-radius:12px; padding:14px 20px; margin-bottom:32px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <span style="font-size:20px;"></span>
+                    <div>
+                        <p style="margin:0; font-weight:700; color:#065F46; font-size:14px;" id="welcome-name">License
+                            Activated</p>
+                        <p style="margin:0; font-size:12px; color:#6b7280;" id="welcome-info">Full access unlocked</p>
+                    </div>
+                </div>
+                <button onclick="revokeLicense()"
+                    style="background:#fff; border:1px solid #D1FAE5; color:#065F46; border-radius:8px; padding:6px 16px; font-size:12px; font-weight:600; cursor:pointer;">🚪
+                    Logout</button>
+            </div>
+
+            <!-- Main Trading Tools -->
+            <section class="mb-16">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-1 h-8 gradient-bg rounded"></div>
+                    <h2 class="text-3xl text-white font-bold text-slate-900">⚡ Main Trading Tools</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Trade History -->
+                    <div class="card-hover bg-white rounded-2xl p-6 shadow-md border border-slate-100">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900">📊 Trade History</h3>
+                                <p class="text-sm text-slate-500 mt-1">Track & manage trades</p>
+                            </div>
+                            <span
+                                class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-semibold">Live</span>
+                        </div>
+                        <a href="javascript:(function()%7Bif(document.getElementById('bnc-trade-panel'))%7Bdocument.getElementById('bnc-trade-panel').remove()%3Bwindow._bncTrades%20%3D%20%5B%5D%3Bwindow._bncSeenIds%20%3D%20new%20Set()%3Bwindow._bncBatches%20%3D%200%3Breturn%3B%7Dif(!window._bncTrades)window._bncTrades%20%3D%20%5B%5D%3Bif(!window._bncSeenIds)window._bncSeenIds%20%3D%20new%20Set()%3Bif(!window._bncBatches)window._bncBatches%20%3D%200%3Bconst%20BNB_PRICE%20%3D%20700%3Bconst%20TARGET%20%3D%20'get-user-trades'%3Bconst%20style%20%3D%20document.createElement('style')%3Bstyle.textContent%20%3D%20%60%0A%20%20%20%20%23bnc-trade-panel%7Bposition%3Afixed%3Bbottom%3A24px%3Bright%3A24px%3Bwidth%3A430px%3Bbackground%3A%23fff%3Bborder-radius%3A14px%3Bborder%3A1px%20solid%20%23e5e7eb%3Bbox-shadow%3A0%208px%2032px%20rgba(0%2C0%2C0%2C.13)%3Bz-index%3A999999%3Bfont-family%3A-apple-system%2CBlinkMacSystemFont%2C'Segoe%20UI'%2Csans-serif%3Bfont-size%3A13px%3Bcolor%3A%23111%3Boverflow%3Ahidden%7D%0A%20%20%20%20%23bnc-panel-header%7Bbackground%3A%230F6E56%3Bcolor%3A%23fff%3Bpadding%3A0%2014px%3Bheight%3A52px%3Bdisplay%3Aflex%3Balign-items%3Acenter%3Bjustify-content%3Aspace-between%3Bcursor%3Apointer%3Buser-select%3Anone%7D%0A%20%20%20%20%23bnc-panel-header%20.title%7Bfont-size%3A13px%3Bfont-weight%3A600%3Bdisplay%3Aflex%3Balign-items%3Acenter%3Bgap%3A8px%7D%0A%20%20%20%20%23bnc-panel-header%20.dot%7Bwidth%3A8px%3Bheight%3A8px%3Bborder-radius%3A50%25%3Bbackground%3Argba(255%2C255%2C255%2C.4)%7D%0A%20%20%20%20%23bnc-panel-header%20.dot.live%7Bbackground%3A%236EE7B7%3Banimation%3Alp%201.5s%20infinite%7D%0A%20%20%20%20%40keyframes%20lp%7B0%25%2C100%25%7Bopacity%3A1%7D50%25%7Bopacity%3A.3%7D%7D%0A%20%20%20%20%23bnc-panel-header%20.btns%7Bdisplay%3Aflex%3Bgap%3A6px%3Balign-items%3Acenter%7D%0A%20%20%20%20%23bnc-panel-header%20button%7Bbackground%3Argba(255%2C255%2C255%2C.15)%3Bborder%3Anone%3Bcolor%3A%23fff%3Bborder-radius%3A6px%3Bpadding%3A3px%209px%3Bcursor%3Apointer%3Bfont-size%3A12px%7D%0A%20%20%20%20%23bnc-panel-header%20button%3Ahover%7Bbackground%3Argba(255%2C255%2C255%2C.28)%7D%0A%20%20%20%20%23bnc-panel-body%7Bpadding%3A12px%2014px%2014px%3Bmax-height%3A530px%3Boverflow-y%3Aauto%7D%0A%20%20%20%20.bnc-batch-bar%7Bdisplay%3Aflex%3Balign-items%3Acenter%3Bjustify-content%3Aspace-between%3Bbackground%3A%23ECFDF5%3Bborder%3A1px%20solid%20%23A7F3D0%3Bborder-radius%3A8px%3Bpadding%3A7px%2012px%3Bmargin-bottom%3A10px%7D%0A%20%20%20%20.bnc-batch-info%7Bfont-size%3A12px%3Bcolor%3A%23065F46%7D%0A%20%20%20%20.bnc-batch-info%20strong%7Bfont-size%3A14px%3Bfont-weight%3A700%7D%0A%20%20%20%20.bnc-clear-btn%7Bbackground%3A%23fff%3Bborder%3A1px%20solid%20%23D1FAE5%3Bcolor%3A%23065F46%3Bborder-radius%3A6px%3Bpadding%3A3px%2010px%3Bcursor%3Apointer%3Bfont-size%3A11px%3Bfont-weight%3A600%7D%0A%20%20%20%20.bnc-clear-btn%3Ahover%7Bbackground%3A%23D1FAE5%7D%0A%20%20%20%20.bnc-metrics%7Bdisplay%3Agrid%3Bgrid-template-columns%3A1fr%201fr%3Bgap%3A8px%3Bmargin-bottom%3A10px%7D%0A%20%20%20%20.bnc-met%7Bbackground%3A%23f8faf9%3Bborder-radius%3A10px%3Bpadding%3A10px%2012px%3Bborder%3A1px%20solid%20%23e5f0eb%7D%0A%20%20%20%20.bnc-met%20.lbl%7Bfont-size%3A11px%3Bcolor%3A%236b7280%3Btext-transform%3Auppercase%3Bletter-spacing%3A.04em%3Bmargin-bottom%3A4px%7D%0A%20%20%20%20.bnc-met%20.val%7Bfont-size%3A20px%3Bfont-weight%3A700%3Bcolor%3A%23111%7D%0A%20%20%20%20.bnc-met%20.sub%7Bfont-size%3A11px%3Bcolor%3A%239ca3af%3Bmargin-top%3A3px%7D%0A%20%20%20%20.bnc-vol-bar%7Bdisplay%3Aflex%3Bheight%3A5px%3Bborder-radius%3A3px%3Boverflow%3Ahidden%3Bmargin-top%3A6px%3Bgap%3A2px%7D%0A%20%20%20%20.bnc-vol-buy%7Bbackground%3A%231D9E75%3Bborder-radius%3A3px%3Btransition%3Awidth%20.4s%7D%0A%20%20%20%20.bnc-vol-sell%7Bbackground%3A%23D85A30%3Bborder-radius%3A3px%3Btransition%3Awidth%20.4s%7D%0A%20%20%20%20.bnc-section%7Bmargin-bottom%3A10px%7D%0A%20%20%20%20.bnc-sec-title%7Bfont-size%3A11px%3Bfont-weight%3A600%3Bcolor%3A%236b7280%3Btext-transform%3Auppercase%3Bletter-spacing%3A.05em%3Bmargin-bottom%3A6px%3Bpadding-bottom%3A5px%3Bborder-bottom%3A1px%20solid%20%23f0f0f0%7D%0A%20%20%20%20.bnc-tk-row%7Bdisplay%3Aflex%3Bjustify-content%3Aspace-between%3Balign-items%3Acenter%3Bpadding%3A5px%200%3Bborder-bottom%3A1px%20solid%20%23f5f5f5%7D%0A%20%20%20%20.bnc-tk-row%3Alast-child%7Bborder%3Anone%7D%0A%20%20%20%20.bnc-tk-name%7Bfont-weight%3A600%3Bcolor%3A%23111%7D%0A%20%20%20%20.bnc-tk-bar%7Bheight%3A3px%3Bbackground%3A%231D9E75%3Bborder-radius%3A2px%3Bmargin-top%3A3px%3Bmax-width%3A140px%7D%0A%20%20%20%20.bnc-badge%7Bdisplay%3Ainline-flex%3Balign-items%3Acenter%3Bfont-size%3A10px%3Bpadding%3A2px%207px%3Bborder-radius%3A999px%3Bfont-weight%3A600%7D%0A%20%20%20%20.bnc-buy%7Bbackground%3A%23D1FAE5%3Bcolor%3A%23065F46%7D%0A%20%20%20%20.bnc-sell%7Bbackground%3A%23FEE2E2%3Bcolor%3A%237F1D1D%7D%0A%20%20%20%20.bnc-fee-row%7Bdisplay%3Aflex%3Bjustify-content%3Aspace-between%3Bfont-size%3A12px%3Bpadding%3A4px%200%3Bcolor%3A%236b7280%7D%0A%20%20%20%20.bnc-fee-row%20span%3Alast-child%7Bcolor%3A%23111%3Bfont-weight%3A500%7D%0A%20%20%20%20.bnc-divider%7Bborder%3Anone%3Bborder-top%3A1px%20solid%20%23f0f0f0%3Bmargin%3A8px%200%7D%0A%20%20%20%20.bnc-total-fee%7Bdisplay%3Aflex%3Bjustify-content%3Aspace-between%3Bfont-size%3A12px%3Bfont-weight%3A700%3Bcolor%3A%23111%7D%0A%20%20%20%20.bnc-trade-tbl%7Bwidth%3A100%25%3Bborder-collapse%3Acollapse%3Bfont-size%3A11.5px%3Btable-layout%3Afixed%7D%0A%20%20%20%20.bnc-trade-tbl%20th%7Bfont-size%3A10px%3Bcolor%3A%239ca3af%3Btext-align%3Aleft%3Bpadding%3A3px%204px%3Bborder-bottom%3A1px%20solid%20%23f0f0f0%3Btext-transform%3Auppercase%3Bletter-spacing%3A.04em%3Bfont-weight%3A600%7D%0A%20%20%20%20.bnc-trade-tbl%20td%7Bpadding%3A5px%204px%3Bborder-bottom%3A1px%20solid%20%23fafafa%3Bvertical-align%3Amiddle%3Boverflow%3Ahidden%3Btext-overflow%3Aellipsis%3Bwhite-space%3Anowrap%7D%0A%20%20%20%20.bnc-trade-tbl%20tr%3Alast-child%20td%7Bborder%3Anone%7D%0A%20%20%20%20.bnc-empty%7Btext-align%3Acenter%3Bpadding%3A24px%3Bcolor%3A%239ca3af%3Bfont-size%3A12px%7D%0A%20%20%20%20.bnc-debug%7Bfont-size%3A10px%3Bcolor%3A%239ca3af%3Bpadding%3A6px%200%3Bborder-top%3A1px%20solid%20%23f0f0f0%3Bmargin-top%3A6px%7D%0A%20%20%60%3Bdocument.head.appendChild(style)%3Bconst%20panel%20%3D%20document.createElement('div')%3Bpanel.id%20%3D%20'bnc-trade-panel'%3Bpanel.innerHTML%20%3D%20%60%0A%20%20%20%20%3Cdiv%20id%3D%22bnc-panel-header%22%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22title%22%3E%3Cspan%20class%3D%22dot%22%20id%3D%22bnc-dot%22%3E%3C/span%3E%F0%9F%93%8A%20Trade%20History%3C/div%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22btns%22%3E%0A%20%20%20%20%20%20%20%20%3Cspan%20id%3D%22bnc-status%22%20style%3D%22font-size%3A11px%3Bopacity%3A.8%22%3EIntercepting...%3C/span%3E%0A%20%20%20%20%20%20%20%20%3Cbutton%20id%3D%22bnc-toggle%22%3E%E2%96%BC%3C/button%3E%0A%20%20%20%20%20%20%20%20%3Cbutton%20id%3D%22bnc-close%22%20style%3D%22font-size%3A15px%3Bpadding%3A2px%207px%22%3E%E2%9C%95%3C/button%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%3C/div%3E%0A%20%20%20%20%3Cdiv%20id%3D%22bnc-panel-body%22%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22bnc-empty%22%3E%E2%8F%B3%20Trade%20history%20load%20korun%20scroll%20korle%20data%20asche...%3C/div%3E%0A%20%20%20%20%3C/div%3E%0A%20%20%60%3Bdocument.body.appendChild(panel)%3Blet%20collapsed%20%3D%20false%3Bdocument.getElementById('bnc-toggle').onclick%20%3D%20function(e)%7Be.stopPropagation()%3Bcollapsed%20%3D%20!collapsed%3Bdocument.getElementById('bnc-panel-body').style.display%20%3D%20collapsed%20%3F%20'none'%20%3A%20''%3Bdocument.getElementById('bnc-toggle').textContent%20%3D%20collapsed%20%3F%20'%E2%96%B2'%20%3A%20'%E2%96%BC'%3B%7D%3Bdocument.getElementById('bnc-close').onclick%20%3D%20function(e)%7Be.stopPropagation()%3Bpanel.remove()%3Bwindow._bncTrades%20%3D%20%5B%5D%3Bwindow._bncSeenIds%20%3D%20new%20Set()%3Bwindow._bncBatches%20%3D%200%3B%7D%3Bdocument.getElementById('bnc-panel-header').onclick%20%3D%20function()%7Bcollapsed%20%3D%20!collapsed%3Bdocument.getElementById('bnc-panel-body').style.display%20%3D%20collapsed%20%3F%20'none'%20%3A%20''%3Bdocument.getElementById('bnc-toggle').textContent%20%3D%20collapsed%20%3F%20'%E2%96%B2'%20%3A%20'%E2%96%BC'%3B%7D%3Bfunction%20feeToUSDT(fee%2Casset%2Cprice%2Cbase)%7Bif(asset%20%3D%3D%3D%20'USDT')return%20fee%3Bif(asset%20%3D%3D%3D%20'BNB')return%20fee%20*%20BNB_PRICE%3Bif(asset%20%3D%3D%3D%20base)return%20fee%20*%20price%3Breturn%200%3B%7Dfunction%20processData(raw)%7Bvar%20parsed%3Btry%7Bparsed%20%3D%20typeof%20raw%20%3D%3D%3D%20'string'%20%3F%20JSON.parse(raw)%3A%20raw%3B%7Dcatch(e)%7Breturn%3B%7Dvar%20incoming%20%3D(parsed%20%26%26%20Array.isArray(parsed.data))%3F%20parsed.data%20%3A(Array.isArray(parsed)%3F%20parsed%20%3A%20null)%3Bif(!incoming%20%7C%7C%20!incoming.length)return%3Bvar%20newCount%20%3D%200%3Bwindow._bncBatches%2B%2B%3Bincoming.forEach(function(x)%7Bvar%20id%20%3D%20String(x.tradeId%20%7C%7C%20x.tradeIdStr%20%7C%7C%20Math.random())%3Bif(!window._bncSeenIds.has(id))%7Bwindow._bncSeenIds.add(id)%3Bx._batch%20%3D%20window._bncBatches%3Bwindow._bncTrades.push(x)%3BnewCount%2B%2B%3B%7D%7D)%3Bif(newCount%20%3E%200)%7Bconsole.log('%E2%8B%AF%20Batch%20%23'%20%2B%20window._bncBatches%20%2B%20':%20%2B'%20%2B%20newCount%20%2B%20'%20trades%20(total:%20'%20%2B%20window._bncTrades.length%20%2B%20')')%3Brender()%3B%7D%7Dfunction%20render()%7Bvar%20trades%20%3D%20window._bncTrades%3Bif(!trades.length)return%3Bvar%20total%3D0%2Cbuy%3D0%2Csell%3D0%2Cbc%3D0%2Csc%3D0%3Bvar%20tokens%3D%7B%7D%2CfeeMap%3D%7B%7D%2CfeeUSDT%3D%7B%7D%2CtokenLastTime%3D%7B%7D%3Bvar%20totalFee%3D0%3Btrades.forEach(function(x)%7Bvar%20v%20%3D%20parseFloat(x.usdtAmount)%7C%7C%200%3Btotal%20%2B%3D%20v%3Bvar%20tk%20%3D(x.baseAsset%20%7C%7C%20'%3F').toUpperCase()%3Btokens%5Btk%5D%20%3D(tokens%5Btk%5D%20%7C%7C%200)%2B%20v%3Bif(!tokenLastTime%5Btk%5D%20%7C%7C%20x.time%20%3E%20tokenLastTime%5Btk%5D)tokenLastTime%5Btk%5D%20%3D%20x.time%3Bif(x.side%20%3D%3D%3D%20'BUY')%7Bbuy%20%2B%3D%20v%3Bbc%2B%2B%3B%7Delse%7Bsell%20%2B%3D%20v%3Bsc%2B%2B%3B%7Dvar%20fee%20%3D%20parseFloat(x.fee)%7C%7C%200%3Bvar%20asset%20%3D%20x.feeAsset%20%7C%7C%20'%3F'%3BfeeMap%5Basset%5D%20%3D(feeMap%5Basset%5D%20%7C%7C%200)%2B%20fee%3Bvar%20fu%20%3D%20feeToUSDT(fee%2Casset%2CparseFloat(x.price)%2Cx.baseAsset)%3BfeeUSDT%5Basset%5D%20%3D(feeUSDT%5Basset%5D%20%7C%7C%200)%2B%20fu%3BtotalFee%20%2B%3D%20fu%3B%7D)%3Bvar%20buyPct%20%3D%20total%20%3F(buy/total*100).toFixed(1)%3A%200%3Bvar%20sellPct%20%3D%20total%20%3F(sell/total*100).toFixed(1)%3A%200%3Bvar%20batches%20%3D%20window._bncBatches%3Bdocument.getElementById('bnc-dot').className%20%3D%20'dot%20live'%3Bdocument.getElementById('bnc-status').textContent%20%3D%20trades.length%20%2B%20'%20trades%20%C2%B7%20'%20%2B%20batches%20%2B%20'%20batch'%3Bvar%20maxVol%20%3D%20Math.max.apply(null%2CObject.values(tokens))%3Bvar%20tokenRows%20%3D%20Object.entries(tokens).sort(function(a%2Cb)%7Breturn(tokenLastTime%5Bb%5B0%5D%5D%7C%7C0)-(tokenLastTime%5Ba%5B0%5D%5D%7C%7C0)%3B%7D).map(function(entry)%7Bvar%20tk%20%3D%20entry%5B0%5D%2Cv%20%3D%20entry%5B1%5D%3Bvar%20pct%20%3D%20total%20%3F(v/total*100).toFixed(1)%3A%200%3Bvar%20barW%20%3D%20maxVol%20%3F%20Math.round(v/maxVol*140)%3A%200%3Bvar%20lastT%20%3D%20tokenLastTime%5Btk%5D%20%3F%20new%20Date(tokenLastTime%5Btk%5D).toLocaleTimeString(%5B%5D%2C%7Bhour%3A'2-digit'%2Cminute%3A'2-digit'%2Csecond%3A'2-digit'%7D)%3A%20''%3Breturn%20'%3Cdiv%20class%3D%22bnc-tk-row%22%3E%3Cdiv%3E%3Cdiv%20class%3D%22bnc-tk-name%22%3E'%2Btk%2B'%3Cspan%20style%3D%22font-weight%3A400%3Bcolor%3A%239ca3af%22%3E/USDT%3C/span%3E%3C/div%3E%3Cdiv%20style%3D%22font-size%3A10px%3Bcolor%3A%239ca3af%3Bmargin-top%3A2px%22%3Elast:%20'%2BlastT%2B'%3C/div%3E%3Cdiv%20class%3D%22bnc-tk-bar%22%20style%3D%22width%3A'%2BbarW%2B'px%3Bmargin-top%3A3px%22%3E%3C/div%3E%3C/div%3E%3Cdiv%20style%3D%22text-align%3Aright%22%3E%3Cdiv%20style%3D%22font-weight%3A600%22%3E%24'%2Bv.toFixed(2)%2B'%3C/div%3E%3Cdiv%20style%3D%22font-size%3A10px%3Bcolor%3A%239ca3af%22%3E'%2Bpct%2B'%25%3C/div%3E%3C/div%3E%3C/div%3E'%3B%7D).join('')%3Bvar%20feeRows%20%3D%20Object.entries(feeMap).map(function(e)%7Breturn%20'%3Cdiv%20class%3D%22bnc-fee-row%22%3E%3Cspan%3E'%2Be%5B0%5D%2B':%20'%2Be%5B1%5D.toFixed(8)%2B'%3C/span%3E%3Cspan%3E%E2%89%88%24'%2BfeeUSDT%5Be%5B0%5D%5D.toFixed(4)%2B'%3C/span%3E%3C/div%3E'%3B%7D).join('')%3Bvar%20tradeRows%20%3D%20trades.slice().reverse().slice(0%2C20).map(function(x)%7Bvar%20isBuy%20%3D%20x.side%20%3D%3D%3D%20'BUY'%3Bvar%20t%20%3D%20new%20Date(x.time).toLocaleTimeString(%5B%5D%2C%7Bhour%3A'2-digit'%2Cminute%3A'2-digit'%2Csecond%3A'2-digit'%7D)%3Breturn%20'%3Ctr%3E%3Ctd%3E%3Cspan%20class%3D%22bnc-badge%20'%2B(isBuy%3F'bnc-buy'%3A'bnc-sell')%2B'%22%3E'%2Bx.side%2B'%3C/span%3E%3C/td%3E%3Ctd%20style%3D%22font-weight%3A600%22%3E'%2B(x.baseAsset%7C%7C'').toUpperCase()%2B'/USDT%3C/td%3E%3Ctd%20style%3D%22color%3A%236b7280%22%3E'%2BparseFloat(x.qty).toLocaleString()%2B'%3C/td%3E%3Ctd%3E'%2BparseFloat(x.price)%2B'%3C/td%3E%3Ctd%20style%3D%22font-weight%3A600%3Bcolor%3A'%2B(isBuy%3F'%23065F46'%3A'%237F1D1D')%2B'%22%3E%24'%2BparseFloat(x.usdtAmount).toFixed(2)%2B'%3C/td%3E%3Ctd%20style%3D%22color%3A%239ca3af%22%3E'%2Bt%2B'%3C/td%3E%3C/tr%3E'%3B%7D).join('')%3Bdocument.getElementById('bnc-panel-body').innerHTML%20%3D%20'%3Cdiv%20class%3D%22bnc-batch-bar%22%3E%3Cdiv%20class%3D%22bnc-batch-info%22%3E%3Cstrong%3E'%2Btrades.length%2B'%3C/strong%3E%20trades%20%C2%B7%20%3Cstrong%3E'%2Bbatches%2B'%3C/strong%3E%20batch%20%C2%B7%20scroll%20kore%20aro%20data%20asche%3C/div%3E%3Cbutton%20class%3D%22bnc-clear-btn%22%20id%3D%22bnc-reset-btn%22%3E%F0%9F%97%91%20Reset%3C/button%3E%3C/div%3E'%20%2B'%3Cdiv%20class%3D%22bnc-metrics%22%3E'%20%2B'%3Cdiv%20class%3D%22bnc-met%22%3E%3Cdiv%20class%3D%22lbl%22%3ETotal%20trades%3C/div%3E%3Cdiv%20class%3D%22val%22%3E'%2Btrades.length%2B'%3C/div%3E%3Cdiv%20class%3D%22sub%22%3E%3Cspan%20class%3D%22bnc-badge%20bnc-buy%22%3EB%20'%2Bbc%2B'%3C/span%3E%26nbsp%3B%3Cspan%20class%3D%22bnc-badge%20bnc-sell%22%3ES%20'%2Bsc%2B'%3C/span%3E%3C/div%3E%3C/div%3E'%20%2B'%3Cdiv%20class%3D%22bnc-met%22%3E%3Cdiv%20class%3D%22lbl%22%3ETotal%20volume%3C/div%3E%3Cdiv%20class%3D%22val%22%3E%24'%2Btotal.toFixed(2)%2B'%3C/div%3E%3Cdiv%20class%3D%22bnc-vol-bar%22%3E%3Cdiv%20class%3D%22bnc-vol-buy%22%20style%3D%22width%3A'%2BbuyPct%2B'%25%22%3E%3C/div%3E%3Cdiv%20class%3D%22bnc-vol-sell%22%20style%3D%22width%3A'%2BsellPct%2B'%25%22%3E%3C/div%3E%3C/div%3E%3C/div%3E'%20%2B'%3Cdiv%20class%3D%22bnc-met%22%3E%3Cdiv%20class%3D%22lbl%22%3EBuy%20volume%3C/div%3E%3Cdiv%20class%3D%22val%22%20style%3D%22color%3A%230F6E56%22%3E%24'%2Bbuy.toFixed(2)%2B'%3C/div%3E%3Cdiv%20class%3D%22sub%22%3E'%2BbuyPct%2B'%25%20of%20total%3C/div%3E%3C/div%3E'%20%2B'%3Cdiv%20class%3D%22bnc-met%22%3E%3Cdiv%20class%3D%22lbl%22%3ESell%20volume%3C/div%3E%3Cdiv%20class%3D%22val%22%20style%3D%22color%3A%23D85A30%22%3E%24'%2Bsell.toFixed(2)%2B'%3C/div%3E%3Cdiv%20class%3D%22sub%22%3E'%2BsellPct%2B'%25%20of%20total%3C/div%3E%3C/div%3E'%20%2B'%3C/div%3E'%20%2B'%3Cdiv%20class%3D%22bnc-section%22%3E%3Cdiv%20class%3D%22bnc-sec-title%22%3EToken%20wise%20volume%3C/div%3E'%2BtokenRows%2B'%3C/div%3E'%20%2B'%3Cdiv%20class%3D%22bnc-section%22%3E%3Cdiv%20class%3D%22bnc-sec-title%22%3EFee%20breakdown%3C/div%3E'%2BfeeRows%2B'%3Chr%20class%3D%22bnc-divider%22%3E%3Cdiv%20class%3D%22bnc-total-fee%22%3E%3Cspan%3ETotal%20fee%20(%E2%89%88USDT)%3C/span%3E%3Cspan%3E%24'%2BtotalFee.toFixed(4)%2B'%3C/span%3E%3C/div%3E%3C/div%3E'%20%2B'%3Cdiv%20class%3D%22bnc-section%22%3E%3Cdiv%20class%3D%22bnc-sec-title%22%3ERecent%20trades%20(last%2020)%3C/div%3E%3Ctable%20class%3D%22bnc-trade-tbl%22%3E%3Cthead%3E%3Ctr%3E%3Cth%20style%3D%22width%3A38px%22%3ESide%3C/th%3E%3Cth%20style%3D%22width%3A95px%22%3EPair%3C/th%3E%3Cth%20style%3D%22width%3A72px%22%3EQty%3C/th%3E%3Cth%20style%3D%22width%3A70px%22%3EPrice%3C/th%3E%3Cth%20style%3D%22width%3A58px%22%3EAmt%3C/th%3E%3Cth%20style%3D%22width%3A68px%22%3ETime%3C/th%3E%3C/tr%3E%3C/thead%3E%3Ctbody%3E'%2BtradeRows%2B'%3C/tbody%3E%3C/table%3E%3C/div%3E'%3Bdocument.getElementById('bnc-reset-btn').onclick%20%3D%20function()%7Bwindow._bncTrades%20%3D%20%5B%5D%3Bwindow._bncBatches%20%3D%200%3Bwindow._bncSeenIds%20%3D%20new%20Set()%3Bdocument.getElementById('bnc-dot').className%20%3D%20'dot'%3Bdocument.getElementById('bnc-status').textContent%20%3D%20'Reset...'%3Bdocument.getElementById('bnc-panel-body').innerHTML%20%3D%20'%3Cdiv%20class%3D%22bnc-empty%22%3E%E2%99%BB%EF%B8%8F%20Reset%20hoyeche.%20Aro%20scroll%20korun.%3C/div%3E'%3B%7D%3Bif(collapsed)%7Bcollapsed%20%3D%20false%3Bdocument.getElementById('bnc-panel-body').style.display%20%3D%20''%3Bdocument.getElementById('bnc-toggle').textContent%20%3D%20'%E2%96%BC'%3B%7D%7Dvar%20origFetch%20%3D%20window.fetch%3Bwindow.fetch%20%3D%20async%20function()%7Bvar%20args%20%3D%20Array.from(arguments)%3Bvar%20url%20%3D%20typeof%20args%5B0%5D%20%3D%3D%3D%20'string'%20%3F%20args%5B0%5D%20%3A(args%5B0%5D%20%26%26%20args%5B0%5D.url%20%3F%20args%5B0%5D.url%20%3A%20'')%3Bvar%20res%20%3D%20await%20origFetch.apply(this%2Cargs)%3Bif(url.indexOf(TARGET)!%3D%3D%20-1)%7Bres.clone().text().then(function(txt)%7BprocessData(txt)%3B%7D).catch(function()%7B%7D)%3B%7Dreturn%20res%3B%7D%3Bvar%20OrigXHR%20%3D%20window.XMLHttpRequest%3Bfunction%20PatchedXHR()%7Bvar%20xhr%20%3D%20new%20OrigXHR()%3Bvar%20_url%20%3D%20''%3Bvar%20origOpen%20%3D%20xhr.open.bind(xhr)%3Bxhr.open%20%3D%20function(method%2Curl)%7B_url%20%3D%20url%20%7C%7C%20''%3Breturn%20origOpen.apply(xhr%2Carguments)%3B%7D%3Bxhr.addEventListener('load'%2Cfunction()%7Bif(_url.indexOf(TARGET)!%3D%3D%20-1)%7Btry%7BprocessData(xhr.responseText)%3B%7Dcatch(e)%7B%7D%7D%7D)%3Breturn%20xhr%3B%7DPatchedXHR.prototype%20%3D%20OrigXHR.prototype%3Bwindow.XMLHttpRequest%20%3D%20PatchedXHR%3Bconsole.log('%E2%9C%85%20Trade%20Dashboard%20ready!')%3B%7D)()"
+                            class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all block text-center">
+                            Trade History
+                        </a>
+                    </div>
+
+                    <!-- Auto Trade -->
+                    <div class="card-hover bg-white rounded-2xl p-6 shadow-md border border-slate-100">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900">🤖 Auto Trade</h3>
+                                <p class="text-sm text-slate-500 mt-1">Automated buy/sell market suggation</p>
+                            </div>
+                            <span
+                                class="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-xs font-semibold">Pro</span>
+                        </div>
+                        <a href="javascript:(async()=>{function delay(ms){return new Promise(r=>setTimeout(r,ms));}function setSliderValue(slider,value){const nativeSetter=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,&quot;value&quot;).set;nativeSetter.call(slider,value);slider.dispatchEvent(new Event(&quot;input&quot;,{bubbles:true}));const thumb=slider.parentElement.querySelector(&quot;.bn-slider-track-thumb&quot;);if(thumb)thumb.style.width=value+&quot;%&quot;;}function realClick(element){element.dispatchEvent(new MouseEvent(&quot;mousedown&quot;,{bubbles:true}));element.dispatchEvent(new MouseEvent(&quot;mouseup&quot;,{bubbles:true}));element.dispatchEvent(new MouseEvent(&quot;click&quot;,{bubbles:true}));}async function selectFirstToken(){const trigger=document.querySelector('.bn-textField-suffix .bn-tooltips-ele');if(!trigger)return console.log(&quot;Trigger not found&quot;);trigger.dispatchEvent(new MouseEvent(&quot;mouseover&quot;,{bubbles:true}));await delay(500);const firstItem=document.querySelector('.trade-dropdown-item');if(firstItem){realClick(firstItem);console.log(&quot;Token selected&quot;);await delay(400);}}const totalActions=parseInt(prompt(&quot;Total actions (Buy/Sell)?&quot;));if(!totalActions)return;await selectFirstToken();for(let i=0;i<totalActions;i++){const isBuy=i%2===0;const slider=document.querySelectorAll(&quot;.percent-slider .bn-slider&quot;)[isBuy?0:1];const btn=document.querySelector(isBuy?&quot;#orderformBuyBtnV2&quot;:&quot;#orderformSellBtnV2&quot;);if(!slider||!btn)return;setSliderValue(slider,isBuy?100:100);await delay(400);realClick(btn);await delay(400);}})();"
+                            class="w-full bg-gradient-to-r from-blue-500 to-cyan-600 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all block text-center">
+                            Run Auto Trade
+                        </a>
+                    </div>
+
+                    <!-- 50 Spot Limit -->
+                    <div class="card-hover bg-white rounded-2xl p-6 shadow-md border border-slate-100">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900">📈 50% Limit</h3>
+                                <p class="text-sm text-slate-500 mt-1">Auto price setter</p>
+                            </div>
+                            <span
+                                class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold">Tool</span>
+                        </div>
+                        <a href='javascript:(function(){if(window.__obAuto){clearInterval(window.__obAuto);window.__obAuto=null;console.log("🛑 Auto stopped");return}function clickTradeHistory(){const el=document.querySelector("[data-testid=\"TradeHistory\"]");if(el)el.click()}function clickSearch(){const btn=document.querySelector("[data-testid=\"Search\"]");if(btn)btn.click()}function stepInc(v,dir){v=v.replace(/,/g,"").trim();if(!v.includes("."))return(parseFloat(v)+(dir*0.01)).toFixed(2);let d=v.split(".")[1].length;let step=Math.pow(10,-d);return(parseFloat(v)+(dir*step)).toFixed(d)}function setVal(el,val){const setter=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,"value").set;setter.call(el,val);el.dispatchEvent(new Event("input",{bubbles:true}));el.dispatchEvent(new Event("change",{bubbles:true}))}function setSliderBuy(slider){const setter=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,"value").set;setter.call(slider,"49");slider.dispatchEvent(new Event("input",{bubbles:true}));slider.dispatchEvent(new Event("change",{bubbles:true}));setTimeout(()=>{setter.call(slider,"50");slider.dispatchEvent(new Event("input",{bubbles:true}));slider.dispatchEvent(new Event("change",{bubbles:true}))},40)}function setSliderSell(slider){const setter=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,"value").set;setter.call(slider,"99");slider.dispatchEvent(new Event("input",{bubbles:true}));slider.dispatchEvent(new Event("change",{bubbles:true}));setTimeout(()=>{setter.call(slider,"100");slider.dispatchEvent(new Event("input",{bubbles:true}));slider.dispatchEvent(new Event("change",{bubbles:true}))},40)}function run(){const priceEl=document.querySelector(".orderbook-ticker .contractPrice > div");const buy=document.querySelector("#FormRow-BUY-price");const sell=document.querySelector("#FormRow-SELL-price");const sliders=document.querySelectorAll(".percent-slider input[type=\"range\"]");if(!priceEl)return;const price=priceEl.textContent.trim();if(buy)setVal(buy,stepInc(price,1));if(sell)setVal(sell,stepInc(price,-1));clickSearch();if(sliders[0])setTimeout(()=>setSliderBuy(sliders[0]),30);if(sliders[1])setTimeout(()=>setSliderSell(sliders[1]),30)}clickTradeHistory();run();window.__obAuto=setInterval(run,400)})()'
+                            class="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all block text-center">
+                            50% spot limit
+                        </a>
+                    </div>
+
+                    <!-- 100 Spot Limit -->
+                    <div class="card-hover bg-white rounded-2xl p-6 shadow-md border border-slate-100">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900">📊 100% Limit</h3>
+                                <p class="text-sm text-slate-500 mt-1">Full auto price</p>
+                            </div>
+                            <span
+                                class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold">Tool</span>
+                        </div>
+                        <a href='javascript:(function(){if(window.__obAuto){clearInterval(window.__obAuto);window.__obAuto=null;console.log("🛑 Auto stopped");return}function clickTradeHistory(){const el=document.querySelector("[data-testid=\"TradeHistory\"]");if(el)el.click()}function clickSearch(){const btn=document.querySelector("[data-testid=\"Search\"]");if(btn)btn.click()}function stepInc(v,dir){v=v.replace(/,/g,"").trim();if(!v.includes("."))return(parseFloat(v)+(dir*0.01)).toFixed(2);let d=v.split(".")[1].length;let step=Math.pow(10,-d);return(parseFloat(v)+(dir*step)).toFixed(d)}function setVal(el,val){const setter=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,"value").set;setter.call(el,val);el.dispatchEvent(new Event("input",{bubbles:true}));el.dispatchEvent(new Event("change",{bubbles:true}))}function setSlider(slider){const setter=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,"value").set;setter.call(slider,"99");slider.dispatchEvent(new Event("input",{bubbles:true}));slider.dispatchEvent(new Event("change",{bubbles:true}));setTimeout(()=>{setter.call(slider,"100");slider.dispatchEvent(new Event("input",{bubbles:true}));slider.dispatchEvent(new Event("change",{bubbles:true}))},40)}function run(){const priceEl=document.querySelector(".orderbook-ticker .contractPrice > div");const buy=document.querySelector("#FormRow-BUY-price");const sell=document.querySelector("#FormRow-SELL-price");const sliders=document.querySelectorAll(".percent-slider input[type=\"range\"]");if(!priceEl)return;const price=priceEl.textContent.trim();if(buy)setVal(buy,stepInc(price,1));if(sell)setVal(sell,stepInc(price,-1));clickSearch();sliders.forEach(s=>setTimeout(()=>setSlider(s),30))}clickTradeHistory();run();window.__obAuto=setInterval(run,400)})()'
+                            class="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all block text-center">
+                            100% spot limit
+                        </a>
+                    </div>
+
+                    <!-- Limit Order -->
+                    <div class="card-hover bg-white rounded-2xl p-6 shadow-md border border-slate-100">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900">💹 Limit Order</h3>
+                                <p class="text-sm text-slate-500 mt-1">Auto order price</p>
+                            </div>
+                            <span
+                                class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold">Futures</span>
+                        </div>
+                        <a href="javascript:(function(){function inc(v){v=v.replace(/,/g,'').trim();if(!v.includes('.'))return(parseFloat(v)+0.01).toFixed(2);let d=v.split('.')[1].length;let step=Math.pow(10,-d);return(parseFloat(v)+step).toFixed(d);}function setVal(el,val){const s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(el,val);el.dispatchEvent(new Event('input',{bubbles:true}));el.dispatchEvent(new Event('change',{bubbles:true}));}function run(){const priceEl=document.querySelector('.contractPrice > div');const input=document.querySelector('input[id^=%22limitPrice%22]');if(!priceEl||!input)return;const newVal=inc(priceEl.textContent);setVal(input,newVal);}run();window.__binanceAuto&&clearInterval(window.__binanceAuto);window.__binanceAuto=setInterval(run,400);})();"
+                            class="w-full bg-gradient-to-r from-blue-500 to-cyan-600 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all block text-center">
+                            Future limit 
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Additional Tools -->
+            <section class="mb-16">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-1 h-8 gradient-bg rounded"></div>
+                    <h2 class="text-3xl text-white font-bold text-slate-900">🛠️ Additional Tools</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <a href="javascript:(()=>{document.querySelector('#wallet-nav-transfer')?.click();setTimeout(()=>{document.querySelector('.transfer-wallet_convert-icon')?.dispatchEvent(new MouseEvent('click',{bubbles:true,cancelable:true}));setTimeout(()=>{[...document.querySelectorAll('button')].find(b=>b.textContent.trim()==='MAX')?.click();},100);},200);})();"
+                        class="bg-white rounded-xl p-4 shadow-md hover:shadow-lg border border-slate-100 hover:border-emerald-300 transition">
+                        <div class="flex items-center gap-3">
+                            <span class="text-3xl">↗️</span>
+                            <div>
+                                <h3 class="font-bold text-slate-900">Transfer to Spot</h3>
+                                <p class="text-xs text-slate-500 mt-1">From funding to spot</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="javascript:(async()=>{const buttons=document.querySelectorAll('button.VoucherAction');for(let btn of buttons){btn.click();await new Promise(r=>setTimeout(r,500));}window.location.href=&quot;https://www.binance.com/en/my/wallet/account/payment/send&quot;;})();"
+                        class="bg-white rounded-xl p-4 shadow-md hover:shadow-lg border border-slate-100 hover:border-blue-300 transition">
+                        <div class="flex items-center gap-3">
+                            <span class="text-3xl">🎁</span>
+                            <div>
+                                <h3 class="font-bold text-slate-900">Claim & Send</h3>
+                                <p class="text-xs text-slate-500 mt-1">Claim rewards</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="javascript:(async()=>{const answers=JSON.parse(prompt(&quot;Paste answers array here&quot;));const wait=ms=>new Promise(r=>setTimeout(r,ms));function clickBtn(t){const b=[...document.querySelectorAll('button')].find(b=>b.innerText.trim().includes(t));if(b){console.log(&quot;Click:&quot;,t);b.click();}}function safeClick(e){if(!e)return;e.focus?.();e.dispatchEvent(new MouseEvent('mousedown',{bubbles:true}));e.dispatchEvent(new MouseEvent('mouseup',{bubbles:true}));e.dispatchEvent(new MouseEvent('click',{bubbles:true}));e.click?.();}function clickOption(text){const options=document.querySelectorAll('.css-vub2nh');for(let opt of options){const t=opt.innerText.replace(/\s+/g,' ').trim();if(t===text.trim()){console.log(&quot;FOUND:&quot;,t);safeClick(opt);safeClick(opt.querySelector('*'));return true;}}console.log(&quot;NOT FOUND:&quot;,text);return false;}let count=0;while(count<answers.length*2){console.log(&quot;LOOP&quot;,count+1);let found=false;for(let i=0;i<answers.length;i++){console.log(&quot;CHECK:&quot;,answers[i]);if(clickOption(answers[i])){found=true;break;}}clickBtn('Submit');await new Promise(r=>setTimeout(r,200));clickBtn('Next Question');await new Promise(r=>setTimeout(r,200));count++;}})();"
+                        class="bg-white rounded-xl p-4 shadow-md hover:shadow-lg border border-slate-100 hover:border-green-300 transition">
+                        <div class="flex items-center gap-3">
+                            <span class="text-3xl">📚</span>
+                            <div>
+                                <h3 class="font-bold text-slate-900">Learn & Earn Auto</h3>
+                                <p class="text-xs text-slate-500 mt-1">Auto answer questions</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://drive.google.com/uc?export=download&id=1GIFaybDFgSG8GDhjCXcjWfwYQYH38HyP"
+                        class="bg-white rounded-xl p-4 shadow-md hover:shadow-lg border border-slate-100 hover:border-green-300 transition">
+                        <div class="flex items-center gap-3">
+                            <span class="text-3xl">📚</span>
+                            <div>
+                                <h3 class="font-bold text-slate-900">Extention Download</h3>
+                                <p class="text-xs text-slate-500 mt-1">extract it and open your chrome then open extention manager turn on developer mode then click Load Unpacked then find you extracted folder and click select folder</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Account Links -->
+            <section class="mb-16">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-1 h-8 gradient-bg rounded"></div>
+                    <h2 class="text-3xl text-white font-bold text-slate-900">👤 Account & Wallet</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <a href="https://www.binance.com/en/my/dashboard"
+                        class="bg-white rounded-xl p-4 shadow-md hover:shadow-lg border border-slate-100 hover:border-emerald-300 transition">
+                        <span class="text-3xl">📊</span>
+                        <h3 class="font-bold text-slate-900 mt-2">Dashboard</h3>
+                        <p class="text-xs text-slate-500 mt-1">Your dashboard</p>
+                    </a>
+                    <a href="https://www.binance.com/en/my/security"
+                        class="bg-white rounded-xl p-4 shadow-md hover:shadow-lg border border-slate-100 hover:border-emerald-300 transition">
+                        <span class="text-3xl">🔐</span>
+                        <h3 class="font-bold text-slate-900 mt-2">Security</h3>
+                        <p class="text-xs text-slate-500 mt-1">Security settings</p>
+                    </a>
+                    <a href="https://www.binance.com/en/my/wallet/account/main"
+                        class="bg-white rounded-xl p-4 shadow-md hover:shadow-lg border border-slate-100 hover:border-blue-300 transition">
+                        <span class="text-3xl">💼</span>
+                        <h3 class="font-bold text-slate-900 mt-2">Spot Wallet</h3>
+                        <p class="text-xs text-slate-500 mt-1">Spot wallet</p>
+                    </a>
+                    <a href="https://www.binance.com/en/my/wallet/funding"
+                        class="bg-white rounded-xl p-4 shadow-md hover:shadow-lg border border-slate-100 hover:border-blue-300 transition">
+                        <span class="text-3xl">💵</span>
+                        <h3 class="font-bold text-slate-900 mt-2">Funding</h3>
+                        <p class="text-xs text-slate-500 mt-1">Funding wallet</p>
+                    </a>
+                    <a href="https://www.binance.com/en/my/wallet/account/earn/simple-earn/flexible"
+                        class="bg-white rounded-xl p-4 shadow-md hover:shadow-lg border border-slate-100 hover:border-purple-300 transition">
+                        <span class="text-3xl">📈</span>
+                        <h3 class="font-bold text-slate-900 mt-2">Earn</h3>
+                        <p class="text-xs text-slate-500 mt-1">Simple earn</p>
+                    </a>
+                    <a href="https://www.binance.com/en/my/wallet/account/futures"
+                        class="bg-white rounded-xl p-4 shadow-md hover:shadow-lg border border-slate-100 hover:border-purple-300 transition">
+                        <span class="text-3xl">🚀</span>
+                        <h3 class="font-bold text-slate-900 mt-2">Futures</h3>
+                        <p class="text-xs text-slate-500 mt-1">Futures trading</p>
+                    </a>
+                    <a href="https://www.binance.com/en/my/payment/receive"
+                        class="bg-white rounded-xl p-4 shadow-md hover:shadow-lg border border-slate-100 hover:border-red-300 transition">
+                        <span class="text-3xl">📩</span>
+                        <h3 class="font-bold text-slate-900 mt-2">C2C Receive</h3>
+                        <p class="text-xs text-slate-500 mt-1">Receive money</p>
+                    </a>
+                    <a href="https://www.binance.com/en/my/wallet/account/payment/send"
+                        class="bg-white rounded-xl p-4 shadow-md hover:shadow-lg border border-slate-100 hover:border-red-300 transition">
+                        <span class="text-3xl">📤</span>
+                        <h3 class="font-bold text-slate-900 mt-2">C2C Send</h3>
+                        <p class="text-xs text-slate-500 mt-1">Send money</p>
+                    </a>
+                </div>
+            </section>
+
+        </div><!-- end #features-unlocked -->
+    </main>
+
+    <!-- Footer (always visible) -->
+    <footer class="bg-[#0B0E11] border-t border-[#1E2329] py-12 pt-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-10">
+                <div>
+                    <h3 class="text-2xl font-bold text-white">Shamim Rana</h3>
+                    <p class="text-slate-400 mt-3">
+                        Full Stack Web Developer specializing in modern JavaScript technologies including React,
+                        Next.js, Node.js, Express.js, MongoDB and related web technologies.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Contact & Portfolio</h4>
+                    <div class="space-y-2 text-slate-400">
+                        <p>🌐 <a href="https://shamimrana.me/" target="_blank"
+                                class="text-[#F0B90B] hover:underline">shamimrana.me</a></p>
+                        <p>💻 Portfolio & Projects</p>
+                        <p>🚀 MERN Stack Developer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-[#1E2329] mt-10 pt-6 text-center">
+                <p class="text-slate-500">© 2026 Shamim Rana. All Rights Reserved.</p>
+                <p class="text-slate-600 text-sm mt-2">Binance Premium Package Dashboard</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ============================================================
+        // LICENSE DATA — edit this array to add/remove valid licenses
+        // ============================================================
+        const VALID_LICENSES = [
+            { name: "Shamim Rana", phone: "01700000001", license: "asdf" },
+            { name: "Rahim Uddin", phone: "01800000002", license: "SR-2024-PREM-0002" },
+            { name: "Karim Ahmed", phone: "01900000003", license: "SR-2024-PREM-0003" },
+            { name: "Demo User", phone: "01700000099", license: "DEMO-LICENSE-9999" }
+        ];
+        // ============================================================
+
+        const LS_KEY = 'bnc_license_v1';
+
+        function findLicense(key) {
+            const k = key.trim().toUpperCase();
+            return VALID_LICENSES.find(l => l.license.toUpperCase() === k) || null;
+        }
+
+        function showFeatures(user) {
+            document.getElementById('features-locked').style.display = 'none';
+            document.querySelector('.buyCard').style.display = 'none';
+            document.querySelector('.buyCardNotish').style.display = 'block';
+            document.getElementById('features-unlocked').style.display = 'block';
+            document.getElementById('welcome-name').textContent = '✅ Welcome, ' + user.name;
+            document.getElementById('welcome-info').textContent = 'License: ' + user.license + ' • Phone: ' + user.phone;
+        }
+        
+        function showLocked() {
+            document.getElementById('features-locked').style.display = 'block';
+            document.querySelector('.buyCard').style.display = 'flex';
+            document.querySelector('.buyCardNotish').style.display = 'none';
+
+
+            document.getElementById('features-unlocked').style.display = 'none';
+        }
+
+        function showLicenseModal() {
+            document.getElementById('license-overlay').style.display = 'flex';
+            document.getElementById('license-input').value = '';
+            document.getElementById('license-error').style.display = 'none';
+            setTimeout(() => document.getElementById('license-input').focus(), 100);
+        }
+
+        function hideLicenseModal() {
+            document.getElementById('license-overlay').style.display = 'none';
+        }
+
+        function revokeLicense() {
+            localStorage.removeItem(LS_KEY);
+            showLocked();
+        }
+
+        // Submit handler
+        document.getElementById('license-submit').addEventListener('click', function () {
+            const val = document.getElementById('license-input').value;
+            const user = findLicense(val);
+            if (user) {
+                localStorage.setItem(LS_KEY, JSON.stringify(user));
+                hideLicenseModal();
+                showFeatures(user);
+            } else {
+                document.getElementById('license-error').style.display = 'block';
+            }
+        });
+
+        // Enter key support
+        document.getElementById('license-input').addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') document.getElementById('license-submit').click();
+        });
+
+        // Close overlay on backdrop click
+        document.getElementById('license-overlay').addEventListener('click', function (e) {
+            if (e.target === this) hideLicenseModal();
+        });
+
+        // On page load — check localStorage
+        (function init() {
+            try {
+                const saved = localStorage.getItem(LS_KEY);
+                if (saved) {
+                    const user = JSON.parse(saved);
+                    // Re-validate against current license list (in case license was revoked)
+                    const valid = findLicense(user.license);
+                    if (valid) {
+                        showFeatures(valid);
+                        return;
+                    } else {
+                        localStorage.removeItem(LS_KEY);
+                    }
+                }
+            } catch (e) { }
+            // No valid saved license — show modal automatically
+            showLicenseModal();
+        })();
+    </script>
+</body>
+
+</html>
