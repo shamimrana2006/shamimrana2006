@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Binance Bookmarks - Complete Tools</title>
-      <link rel="shortcut icon" href="./Binance_Logo.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="./Binance_Logo.png" type="image/x-icon" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
@@ -128,6 +129,60 @@
             content: '🔒';
             font-size: 16px;
         }
+
+        body {
+    background: #0b0b0f;
+    overflow-x: hidden;
+  }
+
+  /* glowing blobs */
+  .blob {
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle, rgba(255,140,0,0.35), transparent 60%);
+    filter: blur(70px);
+    animation: float 14s infinite ease-in-out;
+    z-index: 0;
+  }
+
+  .blob2 {
+    background: radial-gradient(circle, rgba(255,170,0,0.25), transparent 60%);
+    animation-duration: 18s;
+  }
+
+  .blob3 {
+    background: radial-gradient(circle, rgba(255,120,0,0.2), transparent 60%);
+    animation-duration: 22s;
+  }
+
+  @keyframes float {
+    0% { transform: translate(0,0) scale(1); }
+    25% { transform: translate(70px,-60px) scale(1.1); }
+    50% { transform: translate(-60px,80px) scale(0.95); }
+    75% { transform: translate(60px,60px) scale(1.05); }
+    100% { transform: translate(0,0) scale(1); }
+  }
+
+  /* ICON FLOAT ANIMATION */
+  .icon-float {
+    animation: iconMove 3s ease-in-out infinite;
+  }
+
+  @keyframes iconMove {
+    0%   { transform: translateY(0px); }
+    50%  { transform: translateY(-6px); }
+    100% { transform: translateY(0px); }
+  }
+
+  .card {
+    transition: 0.3s;
+  }
+
+  .card:hover {
+    transform: translateY(-6px) scale(1.03);
+    border-color: rgba(255,140,0,0.8);
+  }
     </style>
 </head>
 
@@ -201,7 +256,8 @@
                     </div>
                 </div>
             </div>
-            <div class="bg-black/60 mt-5 border border-yellow-500/30 rounded-2xl p-6 text-gray-200 hidden buyCardNotish ">
+            <div
+                class="bg-black/60 mt-5 border border-yellow-500/30 rounded-2xl p-6 text-gray-200 hidden buyCardNotish ">
 
                 <h2 class="text-2xl font-bold text-yellow-400 mb-3">
                     ⚠️ গুরুত্বপূর্ণ সতর্কবার্তা (Notice)
@@ -249,7 +305,7 @@
 
 
             <!-- ================= PREMIUM BINANCE STYLE FEATURE SECTION ================= -->
-            <section class="relative w-full py-20 overflow-hidden bg-[#0B0E11] text-white">
+            <section class="relative w-full py-20 overflow-hidden bg-[#0B0E11] text-white rounded-3xl">
 
                 <!-- BACKGROUND GLOW -->
                 <div class="absolute inset-0 -z-10">
@@ -273,183 +329,107 @@
                 </div>
 
                 <!-- FEATURE LIST -->
-                <div class="max-w-5xl mx-auto space-y-5 px-4">
+              
+<!-- BACKGROUND -->
+<div class="blob top-[-120px] left-[-120px]"></div>
+<div class="blob blob2 bottom-[-120px] right-[-120px]"></div>
+<div class="blob blob3 top-[30%] left-[40%]"></div>
 
-                    <!-- ITEM -->
-                    <div class="group relative p-6 rounded-2xl border border-[#2B3139] bg-[#111418]
-            shadow-xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1">
+<div class="relative z-10  flex items-center justify-center p-6">
 
-                        <div class="flex gap-4 items-start">
-                            <div class="text-2xl animate-bounce">🤖</div>
-                            <div>
-                                <h3 class="text-[#F0B90B] font-bold text-lg">Auto Trade Engine</h3>
-                                <p class="text-slate-300 text-sm mt-1">
-                                    Fully automated buy/sell execution system with smart price adjustment and fast order
-                                    triggering.
-                                </p>
-                            </div>
-                        </div>
+  <div class="max-w-5xl w-full space-y-6">
 
-                        <div
-                            class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition bg-gradient-to-r from-[#F0B90B]/10 to-transparent">
-                        </div>
-                    </div>
+    <!-- HEADER -->
+    <!-- <div class="text-center">
+      <h1 class="text-4xl font-bold text-orange-400">
+        Binance Style Automation Panel
+      </h1>
+      <p class="text-gray-400 mt-2">Floating Icon Dashboard UI</p>
+    </div> -->
 
-                    <!-- ITEM -->
-                    <div class="group relative p-6 rounded-2xl border border-[#2B3139] bg-[#111418]
-            shadow-xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1">
+    <!-- GROUP 1 -->
+    <div class="bg-black/60 backdrop-blur-lg border border-orange-500/30 p-5 rounded-2xl">
+      <h2 class="text-orange-400 font-semibold mb-4">Core Trading Tools</h2>
 
-                        <div class="flex gap-4 items-start">
-                            <div class="text-2xl animate-pulse">📊</div>
-                            <div>
-                                <h3 class="text-[#F0B90B] font-bold text-lg">Instant Trade History (Advanced Filter)
-                                </h3>
-                                <p class="text-slate-300 text-sm mt-1">
-                                    Full detailed trade history with token filter, date filter, profit tracking &
-                                    analytics view.
-                                </p>
-                            </div>
-                        </div>
+      <div class="grid md:grid-cols-3 gap-3">
 
-                        <div
-                            class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition bg-gradient-to-r from-[#F0B90B]/10 to-transparent">
-                        </div>
-                    </div>
+        <div class="card flex items-center gap-2 bg-gray-900/70 p-3 rounded-lg">
+          <i data-lucide="trending-up" class="text-orange-400 w-5 h-5 icon-float"></i>
+          Auto Limit Setter
+        </div>
 
-                    <!-- ITEM -->
-                    <div class="group relative p-6 rounded-2xl border border-[#2B3139] bg-[#111418]
-            shadow-xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1">
+        <div class="card flex items-center gap-2 bg-gray-900/70 p-3 rounded-lg">
+          <i data-lucide="activity" class="text-orange-400 w-5 h-5 icon-float" style="animation-duration:2.5s;"></i>
+          Auto Trade
+        </div>
 
-                        <div class="flex gap-4 items-start">
-                            <div class="text-2xl animate-bounce">⚡</div>
-                            <div>
-                                <h3 class="text-[#F0B90B] font-bold text-lg">One Click Limit Trade</h3>
-                                <p class="text-slate-300 text-sm mt-1">
-                                    Instant limit order system with auto price adjustment for faster execution.
-                                </p>
-                            </div>
-                        </div>
+        <div class="card flex items-center gap-2 bg-gray-900/70 p-3 rounded-lg">
+          <i data-lucide="history" class="text-orange-400 w-5 h-5 icon-float" style="animation-duration:3.5s;"></i>
+          Auto History Checker
+        </div>
 
-                        <div
-                            class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition bg-gradient-to-r from-[#F0B90B]/10 to-transparent">
-                        </div>
-                    </div>
+      </div>
+    </div>
 
-                    <!-- ITEM -->
-                    <div class="group relative p-6 rounded-2xl border border-[#2B3139] bg-[#111418]
-            shadow-xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1">
+    <!-- GROUP 2 -->
+    <div class="bg-black/60 backdrop-blur-lg border border-orange-500/30 p-5 rounded-2xl">
+      <h2 class="text-orange-400 font-semibold mb-4">Advanced Features</h2>
 
-                        <div class="flex gap-4 items-start">
-                            <div class="text-2xl animate-pulse">🎁</div>
-                            <div>
-                                <h3 class="text-[#F0B90B] font-bold text-lg">Campaign & Reward Tracker</h3>
-                                <p class="text-slate-300 text-sm mt-1">
-                                    Track all Binance campaigns, rewards, bonus history & claim status in real time.
-                                </p>
-                            </div>
-                        </div>
+      <div class="grid md:grid-cols-3 gap-3">
 
-                        <div
-                            class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition bg-gradient-to-r from-[#F0B90B]/10 to-transparent">
-                        </div>
-                    </div>
+        <div class="card flex items-center gap-2 bg-gray-900/70 p-3 rounded-lg">
+          <i data-lucide="users" class="text-orange-400 w-5 h-5 icon-float" style="animation-duration:2.2s;"></i>
+          Multiple Accounts
+        </div>
 
-                    <!-- ITEM -->
-                    <div class="group relative p-6 rounded-2xl border border-[#2B3139] bg-[#111418]
-            shadow-xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1">
+        <div class="card flex items-center gap-2 bg-gray-900/70 p-3 rounded-lg">
+          <i data-lucide="scan-face" class="text-orange-400 w-5 h-5 icon-float" style="animation-duration:3.2s;"></i>
+          Face Verification
+        </div>
 
-                        <div class="flex gap-4 items-start">
-                            <div class="text-2xl animate-bounce">👥</div>
-                            <div>
-                                <h3 class="text-[#F0B90B] font-bold text-lg">Multi Account Strategy Helper</h3>
-                                <p class="text-slate-300 text-sm mt-1">
-                                    Advanced workflow strategy ideas for managing multiple Binance accounts efficiently.
-                                </p>
-                            </div>
-                        </div>
+        <div class="card flex items-center gap-2 bg-gray-900/70 p-3 rounded-lg">
+          <i data-lucide="shield-check" class="text-orange-400 w-5 h-5 icon-float" style="animation-duration:2.8s;"></i>
+          Secure Auth Idea
+        </div>
 
-                        <div
-                            class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition bg-gradient-to-r from-[#F0B90B]/10 to-transparent">
-                        </div>
-                    </div>
+      </div>
+    </div>
 
-                    <!-- ITEM -->
-                    <div class="group relative p-6 rounded-2xl border border-[#2B3139] bg-[#111418]
-            shadow-xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1">
+    <!-- GROUP 3 -->
+    <div class="bg-black/60 backdrop-blur-lg border border-orange-500/30 p-5 rounded-2xl">
+      <h2 class="text-orange-400 font-semibold mb-4">Automation Tools</h2>
 
-                        <div class="flex gap-4 items-start">
-                            <div class="text-2xl animate-pulse">🧩</div>
-                            <div>
-                                <h3 class="text-[#F0B90B] font-bold text-lg">One Click Extension Setup</h3>
-                                <p class="text-slate-300 text-sm mt-1">
-                                    Easy browser extension integration for instant automation activation.
-                                </p>
-                            </div>
-                        </div>
+      <div class="grid md:grid-cols-3 gap-3">
 
-                        <div
-                            class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition bg-gradient-to-r from-[#F0B90B]/10 to-transparent">
-                        </div>
-                    </div>
+        <div class="card flex items-center gap-2 bg-gray-900/70 p-3 rounded-lg">
+          <i data-lucide="message-circle" class="text-orange-400 w-5 h-5 icon-float"></i>
+          Auto QA Campaign
+        </div>
 
-                    <!-- ITEM -->
-                    <div class="group relative p-6 rounded-2xl border border-[#2B3139] bg-[#111418]
-            shadow-xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1">
+        <div class="card flex items-center gap-2 bg-gray-900/70 p-3 rounded-lg">
+          <i data-lucide="arrow-right-left" class="text-orange-400 w-5 h-5 icon-float" style="animation-duration:3.3s;"></i>
+          Auto Transfer
+        </div>
 
-                        <div class="flex gap-4 items-start">
-                            <div class="text-2xl animate-bounce">💰</div>
-                            <div>
-                                <h3 class="text-[#F0B90B] font-bold text-lg">All Reward Claim by one click</h3>
-                                <p class="text-slate-300 text-sm mt-1">
-                                    Faster reward claim workflow for maximizing Binance earning opportunities.
-                                </p>
-                            </div>
-                        </div>
+        <div class="card flex items-center gap-2 bg-gray-900/70 p-3 rounded-lg">
+          <i data-lucide="gift" class="text-orange-400 w-5 h-5 icon-float" style="animation-duration:2.4s;"></i>
+          Auto Claim Rewards
+        </div>
 
-                        <div
-                            class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition bg-gradient-to-r from-[#F0B90B]/10 to-transparent">
-                        </div>
-                    </div>
+        <div class="card flex items-center gap-2 bg-gray-900/70 p-3 rounded-lg">
+          <i data-lucide="plug" class="text-orange-400 w-5 h-5 icon-float" style="animation-duration:3.8s;"></i>
+          Extension Setup
+        </div>
 
-                    <!-- ITEM -->
-                    <div class="group relative p-6 rounded-2xl border border-[#2B3139] bg-[#111418]
-            shadow-xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1">
+      </div>
+    </div>
 
-                        <div class="flex gap-4 items-start">
-                            <div class="text-2xl animate-pulse">📚</div>
-                            <div>
-                                <h3 class="text-[#F0B90B] font-bold text-lg">Learn & Earn Auto Helper</h3>
-                                <p class="text-slate-300 text-sm mt-1">
-                                    Fast navigation system for completing Learn & Earn tasks efficiently.
-                                </p>
-                            </div>
-                        </div>
+  </div>
+</div>
 
-                        <div
-                            class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition bg-gradient-to-r from-[#F0B90B]/10 to-transparent">
-                        </div>
-                    </div>
-
-                    <!-- ITEM -->
-                    <div class="group relative p-6 rounded-2xl border border-[#2B3139] bg-[#111418]
-            shadow-xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1">
-
-                        <div class="flex gap-4 items-start">
-                            <div class="text-2xl animate-bounce">📈</div>
-                            <div>
-                                <h3 class="text-[#F0B90B] font-bold text-lg">Smart Profit Optimization Flow</h3>
-                                <p class="text-slate-300 text-sm mt-1">
-                                    Designed to improve trading efficiency and maximize reward opportunities.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div
-                            class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition bg-gradient-to-r from-[#F0B90B]/10 to-transparent">
-                        </div>
-                    </div>
-
-                </div>
+<script>
+  lucide.createIcons();
+</script>
 
                 <!-- FOOTER NOTE -->
                 <div class="text-center mt-14 px-4">
@@ -592,7 +572,7 @@
                         </div>
                         <a href="javascript:(function(){function inc(v){v=v.replace(/,/g,'').trim();if(!v.includes('.'))return(parseFloat(v)+0.01).toFixed(2);let d=v.split('.')[1].length;let step=Math.pow(10,-d);return(parseFloat(v)+step).toFixed(d);}function setVal(el,val){const s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(el,val);el.dispatchEvent(new Event('input',{bubbles:true}));el.dispatchEvent(new Event('change',{bubbles:true}));}function run(){const priceEl=document.querySelector('.contractPrice > div');const input=document.querySelector('input[id^=%22limitPrice%22]');if(!priceEl||!input)return;const newVal=inc(priceEl.textContent);setVal(input,newVal);}run();window.__binanceAuto&&clearInterval(window.__binanceAuto);window.__binanceAuto=setInterval(run,400);})();"
                             class="w-full bg-gradient-to-r from-blue-500 to-cyan-600 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all block text-center">
-                            Future limit 
+                            Future limit
                         </a>
                     </div>
                 </div>
@@ -641,7 +621,9 @@
                             <span class="text-3xl">📚</span>
                             <div>
                                 <h3 class="font-bold text-slate-900">Extention Download</h3>
-                                <p class="text-xs text-slate-500 mt-1">extract it and open your chrome then open extention manager turn on developer mode then click Load Unpacked then find you extracted folder and click select folder</p>
+                                <p class="text-xs text-slate-500 mt-1">extract it and open your chrome then open
+                                    extention manager turn on developer mode then click Load Unpacked then find you
+                                    extracted folder and click select folder</p>
                             </div>
                         </div>
                     </a>
@@ -764,7 +746,7 @@
             document.getElementById('welcome-name').textContent = '✅ Welcome, ' + user.name;
             document.getElementById('welcome-info').textContent = 'License: ' + user.license + ' • Phone: ' + user.phone;
         }
-        
+
         function showLocked() {
             document.getElementById('features-locked').style.display = 'block';
             document.querySelector('.buyCard').style.display = 'flex';
